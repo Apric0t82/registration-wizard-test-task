@@ -1,0 +1,39 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .checkbox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .button-container button {
+    min-width: 100px;
+  }  
+  
+  .next-button {
+    margin-bottom: 20px;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  

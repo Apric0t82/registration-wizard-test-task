@@ -1,0 +1,92 @@
+<mat-card>
+  
+      <!-- Step 1: Login Info -->
+      <form *ngIf="step === 1" [formGroup]="registerFormStep1" class="form-container">
+        <h2>Step 1</h2>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Login</mat-label>
+          <input matInput formControlName="email" type="email">
+          <mat-error *ngIf="registerFormStep1.controls['email'].hasError('required')">
+            Login is required
+          </mat-error>
+          <mat-error *ngIf="registerFormStep1.controls['email'].hasError('email')">
+            Login must be a valid email
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password">
+          <mat-error *ngIf="registerFormStep1.controls['password'].hasError('required')">
+            Password is required
+          </mat-error>
+          <mat-error *ngIf="registerFormStep1.controls['password'].hasError('pattern')">
+            Password must contain at least 1 digit and 1 letter
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput formControlName="confirmPassword" type="password">
+          <mat-error *ngIf="registerFormStep1.controls['confirmPassword'].hasError('required')">
+            Confirm password is required
+          </mat-error>
+          <mat-error *ngIf="registerFormStep1.controls['confirmPassword'].invalid">
+            Confirm password must be the same as password
+          </mat-error>
+        </mat-form-field>
+
+        <div class="checkbox-container">
+            <mat-checkbox formControlName="agree">Agree with terms</mat-checkbox>
+            <div class="error-message"
+                *ngIf="registerFormStep1.controls['agree'].invalid && (registerFormStep1.controls['agree'].dirty || registerFormStep1.controls['agree'].touched)">
+                You must agree to continue
+            </div>
+        </div>
+  
+        <button mat-raised-button color="primary" class="next-button" (click)="nextStep()">Next</button>
+      </form>
+  
+      <!-- Step 2: Location -->
+      <form *ngIf="step === 2" [formGroup]="registerFormStep2" class="form-container">
+        <h2>Step 2</h2>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Country</mat-label>
+          <mat-select formControlName="country" (selectionChange)="onCountryChange($event.value)">
+            <mat-option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="registerFormStep2.controls['country'].hasError('required')">
+            Country is a required field
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Province</mat-label>
+          <mat-select formControlName="province">
+            <mat-option *ngFor="let province of provinces" [value]="province.id">{{ province.name }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="registerFormStep2.controls['province'].hasError('required')">
+            Province is a required field
+          </mat-error>
+        </mat-form-field>
+  
+        @if (validationErrors) {
+            <div>
+                <ul>
+                    @for (error of validationErrors; track $index) {
+                        <li>{{error}}</li>
+                    }
+                </ul>
+            </div>
+        }
+        
+        <div class="button-container">
+            <button mat-raised-button color="primary" (click)="step = 1">Back</button>
+            <button mat-raised-button color="accent" (click)="submit()">Save</button>
+        </div>
+      </form>
+  
+  </mat-card>
+  
