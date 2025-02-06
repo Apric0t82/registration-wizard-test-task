@@ -35,6 +35,10 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ClientApp", "ClientApp\", "
 		SlnRelativePath = "ClientApp\"
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F3DBB313-8DEE-4F96-B937-E75D07E4B969}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Tests", "Tests\Identity.Tests\Identity.Tests.csproj", "{179AB2F8-17B7-4E84-B9C7-898855705F67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,8 +61,15 @@ Global
 		{D60D3AC7-20EF-4749-9E7E-E56E0E8B4ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D60D3AC7-20EF-4749-9E7E-E56E0E8B4ADA}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{D60D3AC7-20EF-4749-9E7E-E56E0E8B4ADA}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{179AB2F8-17B7-4E84-B9C7-898855705F67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{179AB2F8-17B7-4E84-B9C7-898855705F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{179AB2F8-17B7-4E84-B9C7-898855705F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{179AB2F8-17B7-4E84-B9C7-898855705F67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{179AB2F8-17B7-4E84-B9C7-898855705F67} = {F3DBB313-8DEE-4F96-B937-E75D07E4B969}
 	EndGlobalSection
 EndGlobal
