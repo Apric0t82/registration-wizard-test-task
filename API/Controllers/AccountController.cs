@@ -1,27 +1,17 @@
 ﻿using API.DTOs;
-using Core.Entities;
-using Microsoft.AspNetCore.Identity;
+using API.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
-public class AccountController(SignInManager<AppUser> signInManager) : BaseApiController
+public class AccountController(UserService userService) : BaseApiController
 {
+    private readonly UserService _userService = userService;
+
     [HttpPost("register")]
     public async Task<ActionResult> Register(RegisterDto registerDto)
     {
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
-
-        var user = new AppUser
-        {
-            Email = registerDto.Email,
-            UserName = registerDto.Email,
-            CountryId = registerDto.CountryId,
-            ProvinceId = registerDto.ProvinceId
-        };
-
-        var result = await signInManager.UserManager.CreateAsync(user, registerDto.Password);
+        var result = await _userService.CreateUserAsync(registerDto);
 
         if (!result.Succeeded)
         {
@@ -33,7 +23,7 @@ public class AccountController(SignInManager<AppUser> signInManager) : BaseApiCo
             return ValidationProblem();
         }
 
-        return Ok(new { Message = "User registered successfully" });
+        return Ok("User registered successfully");
     }
 
     [HttpGet("auth-status")]
