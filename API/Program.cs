@@ -1,4 +1,6 @@
+using API.Extensions;
 using API.Middleware;
+using API.Services;
 using Core.Entities;
 using Infrastructure;
 using Infrastructure.Data;
@@ -22,19 +24,23 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddAuthorization();
 builder.Services.AddIdentityApiEndpoints<AppUser>()
-    .AddEntityFrameworkStores<AppDbContext>();
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddPasswordValidator<CustomPasswordValidator<AppUser>>()
+    .AddUserValidator<CustomUserValidator<AppUser>>();
 
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
     // Default Password settings.
-    options.Password.RequireDigit = true;
+    options.Password.RequireDigit = false;
     options.Password.RequireLowercase = false;
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = false;
-    options.Password.RequiredLength = 6;
+    options.Password.RequiredLength = 1;
     options.Password.RequiredUniqueChars = 1;
 });
+
+builder.Services.AddScoped<UserService>();
 
 var app = builder.Build();
 
