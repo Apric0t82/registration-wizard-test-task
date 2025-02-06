@@ -23,7 +23,7 @@ public class AccountController(UserService userService) : BaseApiController
             return ValidationProblem();
         }
 
-        return Ok("User registered successfully");
+        return Ok(new { Message = "User registered successfully" });
     }
 
     [HttpGet("auth-status")]
