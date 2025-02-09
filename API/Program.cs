@@ -69,7 +69,10 @@ try
     using var scope = app.Services.CreateScope();
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<AppDbContext>();
-    await context.Database.MigrateAsync();
+    if (context.Database.IsRelational())
+    {
+        await context.Database.MigrateAsync();
+    }
 }
 catch (Exception ex)
 {
@@ -78,3 +81,5 @@ catch (Exception ex)
 }
 
 app.Run();
+
+public partial class Program { }
