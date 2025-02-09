@@ -69,7 +69,7 @@ try
     using var scope = app.Services.CreateScope();
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<AppDbContext>();
-    if (context.Database.IsRelational())
+    if (!context.Database.IsInMemory())
     {
         await context.Database.MigrateAsync();
     }
