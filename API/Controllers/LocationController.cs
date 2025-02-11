@@ -14,7 +14,7 @@ public class LocationController(AppDbContext context) : BaseApiController
     [HttpGet("countries")]
     public async Task<IActionResult> GetCountries()
     {
-        var countries = await _context.Countries.AsNoTracking()
+        var countries = await _context.Countries
             .Select(c => new { c.Id, c.Name })
             .ToListAsync();
 
@@ -24,7 +24,7 @@ public class LocationController(AppDbContext context) : BaseApiController
     [HttpGet("provinces/{countryId}")]
     public async Task<IActionResult> GetProvinces(int countryId)
     {
-        var provinces = await _context.Provinces.AsNoTracking()
+        var provinces = await _context.Provinces
             .Where(p => p.CountryId == countryId)
             .Select(p => new { p.Id, p.Name })
             .ToListAsync();
