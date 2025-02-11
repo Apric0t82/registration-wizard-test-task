@@ -2,11 +2,6 @@
 using Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Identity.Tests
 {
@@ -33,8 +28,12 @@ namespace Identity.Tests
         [InlineData("", false)]         // Empty
         public async Task ValidateAsync_ChecksPasswordIsCorrect(string password, bool expectedValid)
         {
+            // Arrange
+
+            // Act
             var result = await _passwordValidator.ValidateAsync(_userManager, new AppUser(), password);
 
+            // Assert
             Assert.Equal(expectedValid, result.Succeeded);
         }
 
@@ -45,10 +44,13 @@ namespace Identity.Tests
         [InlineData("", false)]                  // Empty
         public async Task ValidateAsync_ChecksUserLoginCorrectly(string userName, bool expectedValid)
         {
+            // Arrange
             var user = new AppUser { UserName = userName, Email = userName };
 
+            // Act
             var result = await _userValidator.ValidateAsync(_userManager, user);
 
+            // Assert
             Assert.Equal(expectedValid, result.Succeeded);
         }
     }
