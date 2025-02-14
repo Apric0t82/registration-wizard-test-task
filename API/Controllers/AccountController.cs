@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
-public class AccountController(UserService userService) : BaseApiController
+[ApiController]
+[Route("api/[controller]")]
+public class AccountController(UserService userService) : ControllerBase
 {
     private readonly UserService _userService = userService;
 

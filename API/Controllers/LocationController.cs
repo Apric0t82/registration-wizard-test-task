@@ -4,7 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
-public class LocationController(AppDbContext context) : BaseApiController
+[ApiController]
+[Route("api/[controller]")]
+public class LocationController(AppDbContext context) : ControllerBase
 {
     private readonly AppDbContext _context = context;
 
