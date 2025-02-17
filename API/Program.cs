@@ -12,6 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+builder.Services.AddProblemDetails();
+
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -44,10 +48,12 @@ builder.Services.AddScoped<UserService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-app.UseMiddleware<ExceptionMiddleware>();
+// Converts unhandled exceptions into Problem Details responses
+app.UseExceptionHandler();
 
-// Configure the HTTP request pipeline.
+// Returns the Problem Details response for (empty) non-successful responses
+app.UseStatusCodePages();
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
