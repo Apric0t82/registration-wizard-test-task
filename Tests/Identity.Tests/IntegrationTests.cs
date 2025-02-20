@@ -7,6 +7,8 @@ using API.DTOs;
 using API.Services;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
+namespace Identity.Tests;
+
 public class UserIntegrationTests : IClassFixture<WebApplicationFactory<Program>>
 {
     private readonly WebApplicationFactory<Program> _factory;
@@ -20,7 +22,7 @@ public class UserIntegrationTests : IClassFixture<WebApplicationFactory<Program>
                 var dbContextDescriptor = services.SingleOrDefault(
                     d => d.ServiceType ==
                     typeof(IDbContextOptionsConfiguration<AppDbContext>));
-                
+
                 if (dbContextDescriptor != null)
                 {
                     services.Remove(dbContextDescriptor);
@@ -30,7 +32,7 @@ public class UserIntegrationTests : IClassFixture<WebApplicationFactory<Program>
                 {
                     options.UseInMemoryDatabase("TestDb");
                 });
-                
+
             });
         });
     }
@@ -53,6 +55,7 @@ public class UserIntegrationTests : IClassFixture<WebApplicationFactory<Program>
 
         // Act - Call UserService to register user
         var result = await userService.CreateUserAsync(userDto);
+        result.Succeeded.Should().BeTrue();
 
         // Assert - Ensure user is saved in database
         var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();

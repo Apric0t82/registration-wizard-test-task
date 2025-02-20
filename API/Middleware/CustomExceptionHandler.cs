@@ -1,20 +1,18 @@
-﻿using System.Net;
-using System.Text.Json;
-using Microsoft.AspNetCore.Diagnostics;
+﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Middleware;
 
 public class CustomExceptionHandler : IExceptionHandler
 {
-    public async ValueTask<bool> TryHandleAsync(HttpContext context, Exception exception, CancellationToken token)
+    public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
     {
         int status = exception switch
         {
             ArgumentException => StatusCodes.Status400BadRequest,
             _ => StatusCodes.Status500InternalServerError
         };
-        context.Response.StatusCode = status;
+        httpContext.Response.StatusCode = status;
 
         var problemDetails = new ProblemDetails
         {
@@ -24,7 +22,7 @@ public class CustomExceptionHandler : IExceptionHandler
             Detail = exception.Message
         };
 
-        await context.Response.WriteAsJsonAsync(problemDetails, token);
+        await httpContext.Response.WriteAsJsonAsync(problemDetails, cancellationToken);
 
         return true;
     }

@@ -4,6 +4,8 @@ using Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using Moq;
 
+namespace Identity.Tests;
+
 public class RegistrationTests
 {
     private readonly Mock<UserManager<AppUser>> _userManagerMock;
@@ -18,7 +20,7 @@ public class RegistrationTests
         );
 
         _userValidatorMock = new Mock<IUserValidator<AppUser>>();
-        
+
         _userService = new UserService(_userManagerMock.Object);
     }
 
