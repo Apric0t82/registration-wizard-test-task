@@ -37,7 +37,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ClientApp", "ClientApp\", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F3DBB313-8DEE-4F96-B937-E75D07E4B969}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.UnitTests", "Tests\Identity.Tests\Identity.UnitTests.csproj", "{179AB2F8-17B7-4E84-B9C7-898855705F67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.UnitTests", "Tests\Identity.UnitTests\Identity.UnitTests.csproj", "{179AB2F8-17B7-4E84-B9C7-898855705F67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.IntegrationTests", "Tests\Identity.IntegrationTests\Identity.IntegrationTests.csproj", "{4B91CB3A-3D2A-424A-802B-2DA030D50213}"
 EndProject
