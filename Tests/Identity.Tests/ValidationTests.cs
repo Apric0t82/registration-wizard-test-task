@@ -3,7 +3,7 @@ using Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using Moq;
 
-namespace Identity.Tests;
+namespace Identity.UnitTests;
 
 public class ValidationTests
 {

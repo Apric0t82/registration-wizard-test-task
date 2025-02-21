@@ -2,7 +2,6 @@ using API.Extensions;
 using API.Middleware;
 using API.Services;
 using Core.Entities;
-using Infrastructure;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -75,10 +74,7 @@ try
     using var scope = app.Services.CreateScope();
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<AppDbContext>();
-    if (!context.Database.IsInMemory())
-    {
-        await context.Database.MigrateAsync();
-    }
+    await context.Database.MigrateAsync();
 }
 catch (Exception ex)
 {

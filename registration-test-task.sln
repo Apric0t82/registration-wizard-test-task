@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{05933126-0460-40F6-B13A-2DD171417409}"
 EndProject
@@ -37,7 +37,9 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ClientApp", "ClientApp\", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F3DBB313-8DEE-4F96-B937-E75D07E4B969}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Tests", "Tests\Identity.Tests\Identity.Tests.csproj", "{179AB2F8-17B7-4E84-B9C7-898855705F67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.UnitTests", "Tests\Identity.Tests\Identity.UnitTests.csproj", "{179AB2F8-17B7-4E84-B9C7-898855705F67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.IntegrationTests", "Tests\Identity.IntegrationTests\Identity.IntegrationTests.csproj", "{4B91CB3A-3D2A-424A-802B-2DA030D50213}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,11 +67,16 @@ Global
 		{179AB2F8-17B7-4E84-B9C7-898855705F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{179AB2F8-17B7-4E84-B9C7-898855705F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{179AB2F8-17B7-4E84-B9C7-898855705F67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B91CB3A-3D2A-424A-802B-2DA030D50213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B91CB3A-3D2A-424A-802B-2DA030D50213}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B91CB3A-3D2A-424A-802B-2DA030D50213}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B91CB3A-3D2A-424A-802B-2DA030D50213}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{179AB2F8-17B7-4E84-B9C7-898855705F67} = {F3DBB313-8DEE-4F96-B937-E75D07E4B969}
+		{4B91CB3A-3D2A-424A-802B-2DA030D50213} = {F3DBB313-8DEE-4F96-B937-E75D07E4B969}
 	EndGlobalSection
 EndGlobal
